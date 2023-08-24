@@ -1,23 +1,68 @@
 package com.cydeo.controller;
 
-import com.cydeo.dto.RoleDTO;
 import com.cydeo.dto.UserDTO;
+import com.cydeo.service.RoleService;
+import com.cydeo.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/user")
 public class UserController {
 
+    private final RoleService roleService;
+    private final UserService userService;
+
+    public UserController(RoleService roleService, UserService userService) {
+        this.roleService = roleService;
+        this.userService = userService;
+    }
+
     @GetMapping("/create")
     public String createUser(Model model){
 
         model.addAttribute("user", new UserDTO());
-        //model.addAttribute("roles", find all roles from DB);
+        model.addAttribute("roles", roleService.findAll());
+        model.addAttribute("users",userService.findAll());
 
         return "/user/create";
+    }
+
+    @PostMapping("/create")
+    public String insertUser(@ModelAttribute("user") UserDTO user, Model model){
+
+//        (user object, roles, users)
+//        model.addAttribute("user",new UserDTO());
+//        model.addAttribute("roles", roleService.findAll());
+        userService.save(user);
+//        model.addAttribute("users",userService.findAll());
+
+        return "redirect:/user/create";
+    }
+
+    @GetMapping("/update/{username}")
+    public String editUser(@PathVariable("username") String username, Model model){
+
+        //user object ${user}
+        model.addAttribute("user",userService.findById(username));
+
+        //roles ${roles}
+        model.addAttribute("roles", roleService.findAll());
+
+        //users ${users}
+        model.addAttribute("users",userService.findAll());
+
+        return "/user/update";
+    }
+
+    @PostMapping("/update")
+    public String updateUser(@ModelAttribute("user") UserDTO user){
+
+        //update that user. Do we have a service? No
+        userService.update(user);
+
+        return "redirect:/user/create";
     }
 
 }
