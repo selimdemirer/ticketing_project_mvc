@@ -59,7 +59,7 @@ public class UserController {
     @PostMapping("/update")
     public String updateUser(@ModelAttribute("user") UserDTO user){
 
-        //update that user. Do we have a service? No
+        //update that user. Do we have a service? Now yes
         userService.update(user);
 
         return "redirect:/user/create";
