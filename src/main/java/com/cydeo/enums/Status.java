@@ -1,6 +1,7 @@
 package com.cydeo.enums;
 
 public enum Status {
+
     OPEN("Open"),IN_PROGRESS("In Progress"),COMPLETE("Completed");
 
     private final String value;
@@ -12,4 +13,5 @@ public enum Status {
     Status(String value) {
         this.value = value;
     }
+
 }
