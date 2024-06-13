@@ -20,6 +20,12 @@ Ticketing Project (Project Management Tool) - MVC
 
 7. Dispatcher Servlet returns in the HTTP response the rendered view.
 
+![img_1.png](img_1.png)
+
+![img.png](img.png)
+
+![img_2.png](img_2.png)
+
 • All of them is done by Java except for Controller classes. Whenever we put @Controller annotation, everything all the methods inside is registering in the Handler Mapping. We put @RequestMapping annotation top of the methods with end points. Those methods return View Resolver.
 
 • We cannot use same "endpoint" (@RequestMapping("/...") in different classes!
