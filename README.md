@@ -20,13 +20,15 @@ Ticketing Project (Project Management Tool) - MVC
 
 7. Dispatcher Servlet returns in the HTTP response the rendered view.
 
+![img_3.png](img_3.png)
+
 ![img_1.png](img_1.png)
 
 ![img.png](img.png)
 
 ![img_2.png](img_2.png)
 
-• All of them is done by Java except for Controller classes. Whenever we put @Controller annotation, everything all the methods inside is registering in the Handler Mapping. We put @RequestMapping annotation top of the methods with end points. Those methods return View Resolver.
+• All of them is done by Java except for Controller classes. Whenever we put @Controller annotation, everything all the methods inside is registering in the Handler Mapping. We put @RequestMapping annotation on top of the methods with end points. Those methods return View Resolver.
 
 • We cannot use same "endpoint" (@RequestMapping("/...") in different classes!
 
@@ -57,6 +59,18 @@ Ticketing Project (Project Management Tool) - MVC
 ○ You need to specify a specific resource by ID.
 
 ○ The value is required and is a fundamental part of the URL structure (e.g., resource identification).
+
+• CrudService: We created this service by using generics. Other services extend this service for common methods.
+
+• AbstractMapService: We created this service as an abstract class  by using generics so that other service implementation classes implement common methods. 
+
+• ?ServiceImpl: All service implementation classes will use @Override to implement the methods and will use super keyword to call the parent class's (AbstractMapService) method implementation. 
+
+• Since we haven't any database yet. We created a map to keep the data and serve as a database. And we put it into the AbstractMapService class. This is a temporary solution until Spring Data.
+
+• DataGenerator in the bootstrap package just for visualization purpose when we run the app. We are saving the data into our "map" for now but we don't need to use that data. Because we didn't create repository/data layer yet.
+
+![img_2.png](img_2.png)
 
 • Summary
 

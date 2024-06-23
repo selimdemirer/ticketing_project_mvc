@@ -9,6 +9,7 @@ import java.util.List;
 
 @Service // like @Component - creates beans
 public class RoleServiceImpl extends AbstractMapService<RoleDTO,Long> implements RoleService {
+
     @Override
     public RoleDTO save(RoleDTO role) {
         return super.save(role.getId(), role);
@@ -33,4 +34,5 @@ public class RoleServiceImpl extends AbstractMapService<RoleDTO,Long> implements
     public void update(RoleDTO object) {
         super.update(object.getId(), object);
     }
+
 }
