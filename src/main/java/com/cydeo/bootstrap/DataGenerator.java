@@ -34,7 +34,15 @@ public class DataGenerator implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        //create some roles and put in the DataBase (map)
+        // 1. create some roles and put in the DataBase (map)
+
+        /*
+        RoleService rs = new RoleServiceImpl();
+        rs.save(adminRole);
+        Did I add adminRole object in the map?
+        Yes, but this is Tight Coupling. We need to implement IoC principle and DI to get Loose Coupling. Spring Boot doesn't like "new" keyword!
+        */
+
         RoleDTO adminRole = new RoleDTO(1L,"Admin");
         RoleDTO managerRole = new RoleDTO(2L,"Manager");
         RoleDTO employeeRole = new RoleDTO(3L,"Employee");
@@ -43,7 +51,7 @@ public class DataGenerator implements CommandLineRunner {
         roleService.save(managerRole);
         roleService.save(employeeRole);
 
-        //create users and put in the DataBase (map)
+        // 2. create users and put in the DataBase (map)
 
         UserDTO user1 = new UserDTO("John", "Kesy",
                 "john@cydeo.com", "Abc1","Abc1", true, "7459684532", managerRole, Gender.MALE);

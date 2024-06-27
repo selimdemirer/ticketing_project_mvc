@@ -22,14 +22,14 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/create")
+    @GetMapping("/create") // end point
     public String createUser(Model model){
 
         model.addAttribute("user", new UserDTO());
         model.addAttribute("roles", roleService.findAll());
         model.addAttribute("users",userService.findAll());
 
-        return "/user/create";
+        return "/user/create"; // view
     }
 
     @PostMapping("/create")
@@ -49,7 +49,7 @@ public class UserController {
         userService.save(user);
 //        model.addAttribute("users",userService.findAll());
 
-        return "redirect:/user/create";
+        return "redirect:/user/create"; // go to end point -> /user/create , not view!
     }
 
     @GetMapping("/update/{username}")

@@ -72,6 +72,12 @@ Ticketing Project (Project Management Tool) - MVC
 
 ![img_2.png](img_2.png)
 
+• We haven't got any data yet. But we need to put some data in our map. No role, no user, nothing.. Therefore we created a new package called "bootstrap". We created DataGenerator class which is implementing "CommanLineRunner" interface that is giving by Spring. This interface's job is, whenever we run the app in the main runner, first this "run"method will execute, before doing anything. So, basically we are gonna put anything inside the run method whatever I want to Spring to do for me in the beginning. Because when we start the app, we want to see some uploaded data (like roles) over there.
+
+• If one class has a dependency or if this class is gonna be used as a dependency some other class (basically if we make DI), we need to use @Component (@Controller, @Service)
+
+• If you have an object in the UI, and if you have another object inside it, you need "Converter". (For example: User Create form - Choose A Role dropdown menu)
+
 • Summary
 
 • A dynamic page might display different content for different requests.
