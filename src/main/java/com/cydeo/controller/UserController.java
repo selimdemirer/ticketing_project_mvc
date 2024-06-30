@@ -49,7 +49,7 @@ public class UserController {
         userService.save(user);
 //        model.addAttribute("users",userService.findAll());
 
-        return "redirect:/user/create"; // go to end point -> /user/create , not view!
+        return "redirect:/user/create"; // go to end point -> /user/create , not view! It returns method through end point, it is not using html files (view)!
     }
 
     @GetMapping("/update/{username}")

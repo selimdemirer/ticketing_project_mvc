@@ -78,6 +78,12 @@ Ticketing Project (Project Management Tool) - MVC
 
 • If you have an object in the UI, and if you have another object inside it, you need "Converter". (For example: User Create form - Choose A Role dropdown menu)
 
+• @PathVariable ("username") String username: It is used to catch the data from browser to our code. (or we can use query parameter with @RequestParam)
+
+• redirect: It returns method through end point, it is not using html files (view)!   
+   return"mentor/mentor-register";    //view   
+   return "redirect:/mentor/register";    //method!
+
 • Summary
 
 • A dynamic page might display different content for different requests.
