@@ -7,7 +7,7 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
 @Component
-@ConfigurationPropertiesBinding
+//@ConfigurationPropertiesBinding
 public class UserDtoConverter implements Converter<String, UserDTO> {
 
     UserService userService;
