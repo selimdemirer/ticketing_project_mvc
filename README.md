@@ -72,7 +72,7 @@ Ticketing Project (Project Management Tool) - MVC
 
 ![img_2.png](img_2.png)
 
-• We haven't got any data yet. But we need to put some data in our map. No role, no user, nothing.. Therefore we created a new package called "bootstrap". We created DataGenerator class which is implementing "CommanLineRunner" interface that is giving by Spring. This interface's job is, whenever we run the app in the main runner, first this "run"method will execute, before doing anything. So, basically we are gonna put anything inside the run method whatever I want to Spring to do for me in the beginning. Because when we start the app, we want to see some uploaded data (like roles) over there.
+• We haven't got any data yet. But we need to put some data in our map. No role, no user, nothing.. Therefore we created a new package called "bootstrap". We created DataGenerator class which is implementing "CommanLineRunner" interface that is giving by Spring. This interface's job is, whenever we run the app in the main runner, first this "run" method will execute, before doing anything. So, basically we are gonna put anything inside the run method whatever I want to Spring to do for me in the beginning. Because when we start the app, we want to see some uploaded data (like roles) over there.
 
 • If one class has a dependency or if this class is gonna be used as a dependency some other class (basically if we make DI), we need to use @Component (@Controller, @Service)
 
@@ -80,9 +80,29 @@ Ticketing Project (Project Management Tool) - MVC
 
 • @PathVariable ("username") String username: It is used to catch the data from browser to our code. (or we can use query parameter with @RequestParam)
 
-• redirect: It returns method through end point, it is not using html files (view)!   
-   return"mentor/mentor-register";    //view   
+• redirect: It returns method through end point, it is not using html files (view)! It's typically used to avoid duplicate form submissions.   
+   return "mentor/mentor-register";    //view   
    return "redirect:/mentor/register";    //method!
+
+• The Post/Redirect/Get (PRG) pattern is a web development design pattern used to prevent certain problems that can occur when handling form submissions. Here's how it typically works:
+
+   Post: When a user submits a form (e.g., a registration form or a search form) using the HTTP POST method, the data is sent to the server. This data could include user inputs like text fields, checkboxes, etc.
+
+   Redirect: After processing the form data on the server side (like saving it to a database), instead of returning a traditional HTML response directly back to the user, the server issues an HTTP redirect response to the client. This redirect sends the client to a new URL, typically the same page that generated the form.
+
+   Get: The client (browser) then makes a new HTTP GET request to the redirected URL. This GET request fetches a fresh copy of the page. This effectively prevents the problem of duplicate form submissions caused by users refreshing the page that was a result of a POST request.
+
+   Why use PRG pattern?
+
+   Prevents Duplicate Form Submissions: Without PRG, if a user refreshes a page that was a result of a POST request, most browsers will re-submit the form data, potentially causing duplicate submissions.
+
+   Better User Experience: By redirecting after a POST request, users are less likely to accidentally resubmit form data when refreshing the page.
+
+   Maintains Clean URLs: Using PRG helps in keeping the URL of the page clean and user-friendly, as it directs back to the original form page after processing.
+
+• If you don't know the attribute name, you need to go .html and find it there (for example: go to table in the task/create.html -> ${tasks})
+
+• If you don't know which attributes the controller method needs to have, you need to go .html and check the "${attributeName}"!
 
 • Summary
 

@@ -55,10 +55,10 @@ public class ProjectController {
     }
 
     @PostMapping("/update")
-    public String updateProject(@ModelAttribute("projectCode") ProjectDTO projectCode) {
+    public String updateProject(@ModelAttribute("projectCode") ProjectDTO project) {
 
         //update that user. Do we have a service? Now yes
-        projectService.update(projectCode);
+        projectService.update(project);
 
         return "redirect:/project/create";
     }
@@ -74,7 +74,7 @@ public class ProjectController {
     @GetMapping("/complete/{projectCode}")
     public String completeProject(@PathVariable("projectCode") String projectCode) {
 
-        //complete -> status to complete -> Do I have service doing this jo for me?
+        //complete -> status to complete -> Do I have service doing this job for me?
         projectService.complete(projectService.findById(projectCode));
 
         return "redirect:/project/create";

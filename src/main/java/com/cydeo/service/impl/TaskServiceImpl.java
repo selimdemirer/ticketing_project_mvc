@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class TaskServiceImpl extends AbstractMapService<TaskDTO,Long> implements TaskService {
+
     @Override
     public TaskDTO save(TaskDTO task) {
 
@@ -20,7 +21,7 @@ public class TaskServiceImpl extends AbstractMapService<TaskDTO,Long> implements
             task.setTaskStatus(Status.OPEN);
         if (task.getAssignedDate()==null)
             task.setAssignedDate(LocalDate.now());
-        if (task.getId()==null) // it is the most tricky part, because it doesn't appear in the table
+        if (task.getId()==null) // it is the most tricky part, because it doesn't appear in the table!
             task.setId(UUID.randomUUID().getMostSignificantBits());
 
         return super.save(task.getId(), task);
