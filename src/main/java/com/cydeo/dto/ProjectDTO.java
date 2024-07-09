@@ -35,4 +35,5 @@ public class ProjectDTO {
         this.detail = detail;
         this.projectStatus = projectStatus;
     }
+
 }

@@ -71,7 +71,7 @@ public class TaskController {
 //        return "redirect:/task/create";
 //    }
 
-    @PostMapping("/update/{id}") //it is same with the code above
+    @PostMapping("/update/{id}") // since Spring is so clever it is done by automatically. (if your field name in the TaskDTO matches with the "id" here, spring already knows what to parse this "id" to which field of the "task". So you don't need to use @PathVariable) it is same with the code above!
     public String updateTask(TaskDTO task) {
 
         taskService.update(task);
