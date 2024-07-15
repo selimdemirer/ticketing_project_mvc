@@ -83,7 +83,7 @@ public class ProjectController {
     @GetMapping("/manager/project-status")
     public String getProjectByManager(Model model) {
 
-        UserDTO manager = userService.findById("john@cydeo.com");
+        UserDTO manager = userService.findById("john@cydeo.com"); // since we haven't implemented security yet, we put the manager information as hard coded! After security, it will be done automatically!
 
         List<ProjectDTO> projects = projectService.getCountedListOfProjectDTO(manager);
 

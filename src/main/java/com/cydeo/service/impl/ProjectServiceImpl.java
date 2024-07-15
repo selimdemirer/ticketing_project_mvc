@@ -70,15 +70,16 @@ public class ProjectServiceImpl extends AbstractMapService<ProjectDTO, String> i
 
                     List<TaskDTO> taskList = taskService.findTasksByManager(manager);
 
-
                     int completedTaskCounts = (int) taskList.stream()
-                            .filter(task->task.getProject().equals(project) && task.getTaskStatus() == Status.COMPLETE).count();
+                            .filter(task->task.getProject().equals(project) && task.getTaskStatus() == Status.COMPLETE).count(); // we are checking both "is the project John's" and "is it completed"
                     int unfinishedTaskCounts = (int) taskList.stream()
                             .filter(task->task.getProject().equals(project) && task.getTaskStatus() != Status.COMPLETE).count();
 
                     project.setCompletedTaskCounts(completedTaskCounts);
                     project.setUnfinishedTaskCounts(unfinishedTaskCounts);
+
                     return project;
+
                 })
                 .collect(Collectors.toList());
 
